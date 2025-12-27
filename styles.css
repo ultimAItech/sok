@@ -1703,3 +1703,10 @@ html {
         background-position: -200% 0;
     }
 }
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
