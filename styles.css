@@ -109,6 +109,7 @@
 html {
     font-size: 16px;
     scroll-behavior: smooth;
+    -webkit-tap-highlight-color: rgba(26, 77, 46, 0.2);
 }
 
 body {
@@ -477,10 +478,40 @@ button {
 .nav-primary,
 .nav-secondary {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: var(--spacing-xs);
+    /* Mobile scroll optimization */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Hide scrollbar */
+.nav-primary::-webkit-scrollbar,
+.nav-secondary::-webkit-scrollbar {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .nav-primary,
+    .nav-secondary {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-left: var(--container-padding);
+        padding-right: var(--container-padding);
+        flex-wrap: nowrap;
+        margin: 0 calc(-1 * var(--container-padding));
+        scroll-snap-type: x mandatory;
+    }
+
+    .nav-primary a,
+    .nav-secondary a {
+        white-space: nowrap;
+        scroll-snap-align: center;
+        flex: 0 0 auto;
+    }
 }
 
 .nav-primary {
@@ -926,10 +957,16 @@ button {
 
 @media (max-width: 992px) {
     .cta-grid {
-        grid-template-columns: 1fr;
-        max-width: 550px;
-        margin: 0 auto;
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-xl);
+    }
+}
+
+@media (max-width: 576px) {
+    .cta-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+        margin: 0 auto;
     }
 }
 
@@ -1238,7 +1275,7 @@ button {
    ======================================== */
 .footer {
     background: var(--gradient-dark);
-    padding: var(--spacing-3xl) 0 var(--spacing-xl);
+    padding: var(--spacing-3xl) 0 calc(var(--spacing-xl) + env(safe-area-inset-bottom));
     position: relative;
     overflow: hidden;
 }
@@ -1446,10 +1483,12 @@ button {
     flex: 1;
     padding: var(--spacing-2xl);
     display: flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding-bottom: calc(var(--spacing-2xl) + env(safe-area-inset-bottom));
 }
 
 .cart-empty {
@@ -1474,6 +1513,17 @@ button {
 /* Enable smooth scrolling globally */
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Prevent iOS input zoom */
+@media screen and (max-width: 768px) {
+
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
 }
 
 /* Optimize for touch devices */
