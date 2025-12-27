@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initCartSidebar();
     initProductCardEffects();
     initMobileMenu();
+    initSearchPopup();
 });
 
 /**
@@ -173,7 +174,7 @@ function initProductCardEffects() {
 
         container.addEventListener('mouseleave', (e) => {
             const card = e.target.closest('.product-card, .cta-card');
-            if(card) {
+            if (card) {
                 card.style.transform = '';
             }
         });
@@ -371,4 +372,47 @@ function initMobileMenu() {
             }
         });
     });
+}
+
+
+/**
+ * Search Popup Toggle
+ */
+function initSearchPopup() {
+    const searchIconBtn = document.querySelector('.search-icon-btn');
+    const searchPopup = document.querySelector('.search-popup');
+    const closeSearchBtn = document.querySelector('.close-search');
+    const searchInput = document.querySelector('.search-popup-bar input');
+
+    if (searchIconBtn && searchPopup) {
+        // Open search popup
+        searchIconBtn.addEventListener('click', () => {
+            searchPopup.classList.add('open');
+            document.body.style.overflow = 'hidden';
+            // Focus input after animation
+            setTimeout(() => searchInput?.focus(), 300);
+        });
+
+        // Close search popup
+        const closeSearch = () => {
+            searchPopup.classList.remove('open');
+            document.body.style.overflow = '';
+        };
+
+        closeSearchBtn?.addEventListener('click', closeSearch);
+        
+        // Close on backdrop click
+        searchPopup.addEventListener('click', (e) => {
+            if (e.target === searchPopup) {
+                closeSearch();
+            }
+        });
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && searchPopup.classList.contains('open')) {
+                closeSearch();
+            }
+        });
+    }
 }
