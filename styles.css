@@ -110,6 +110,8 @@ html {
     font-size: 16px;
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: rgba(26, 77, 46, 0.2);
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 body {
@@ -121,6 +123,8 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
 }
 
 /* Smooth scrollbar */
@@ -171,6 +175,23 @@ button {
     max-width: var(--container-max);
     margin: 0 auto;
     padding: 0 var(--container-padding);
+    width: 100%;
+}
+
+/* Prevent media overflow */
+img,
+video,
+iframe,
+embed,
+object {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevent text overflow */
+* {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .skip-link {
@@ -1914,5 +1935,69 @@ html {
     to {
         transform: scale(4);
         opacity: 0;
+    }
+}
+
+/* ========================================
+   Global Mobile Overflow Prevention
+   ======================================== */
+@media (max-width: 992px) {
+    /* Ensure all sections respect viewport */
+    section, header, footer, main, nav, aside {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    
+    /* Prevent any fixed/absolute elements from causing overflow */
+    .header-container,
+    .nav-container,
+    .footer-main,
+    .footer-bottom {
+        max-width: 100%;
+    }
+    
+    /* Ensure grids dont overflow */
+    .products-grid,
+    .cta-grid,
+    .categories-grid {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Extra safety for small devices */
+    .header-actions {
+        gap: 0.5rem;
+    }
+    
+    .icon-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .menu-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Ensure hero content doesnt overflow */
+    .hero-content {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.5rem, 7vw, 2rem);
+    }
+    
+    /* Footer adjustments */
+    .footer-social {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .social-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
     }
 }
