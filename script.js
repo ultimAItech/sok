@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initCartSidebar();
     initProductCardEffects();
     initMobileMenu();
-    initSearchPopup();
+    initSearchModal();
 });
 
 /**
@@ -376,41 +376,41 @@ function initMobileMenu() {
 
 
 /**
- * Search Popup Toggle
+ * Search Modal Toggle
  */
-function initSearchPopup() {
-    const searchIconBtn = document.querySelector('.search-icon-btn');
-    const searchPopup = document.querySelector('.search-popup');
-    const closeSearchBtn = document.querySelector('.close-search');
-    const searchInput = document.querySelector('.search-popup-bar input');
-
-    if (searchIconBtn && searchPopup) {
-        // Open search popup
-        searchIconBtn.addEventListener('click', () => {
-            searchPopup.classList.add('open');
-            document.body.style.overflow = 'hidden';
+function initSearchModal() {
+    const searchBtn = document.querySelector(".search-btn");
+    const searchModal = document.querySelector(".search-modal");
+    const closeSearchBtn = document.querySelector(".close-search");
+    const searchInput = document.querySelector(".search-modal input");
+    
+    if (searchBtn && searchModal) {
+        // Open search modal
+        searchBtn.addEventListener("click", () => {
+            searchModal.classList.add("open");
+            document.body.style.overflow = "hidden";
             // Focus input after animation
-            setTimeout(() => searchInput?.focus(), 300);
+            setTimeout(() => searchInput?.focus(), 100);
         });
-
-        // Close search popup
-        const closeSearch = () => {
-            searchPopup.classList.remove('open');
-            document.body.style.overflow = '';
-        };
-
-        closeSearchBtn?.addEventListener('click', closeSearch);
         
-        // Close on backdrop click
-        searchPopup.addEventListener('click', (e) => {
-            if (e.target === searchPopup) {
+        // Close search modal
+        function closeSearch() {
+            searchModal.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+        
+        closeSearchBtn?.addEventListener("click", closeSearch);
+        
+        // Close on background click
+        searchModal.addEventListener("click", (e) => {
+            if (e.target === searchModal) {
                 closeSearch();
             }
         });
-
-        // Close on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && searchPopup.classList.contains('open')) {
+        
+        // Close on Escape key
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && searchModal.classList.contains("open")) {
                 closeSearch();
             }
         });

@@ -37,23 +37,13 @@
 
             <!-- Header Actions -->
             <div class="header-actions">
-                <button class="search-icon-btn icon-btn" aria-label="Zoeken openen">
+                <button class="icon-btn search-btn" aria-label="Zoeken">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </button>
-                <div class="search-bar">
-                    <input type="text" placeholder="Zoeken naar producten..." aria-label="Zoeken">
-                    <button type="submit" aria-label="Zoeken">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </button>
-                </div>
                 <a href="#" class="icon-btn" aria-label="Mijn Account">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -467,23 +457,6 @@
         </div>
     </footer>
 
-    <!-- Search Popup Modal (hidden by default) -->
-    <div class="search-popup" aria-hidden="true">
-        <div class="search-popup-content">
-            <button class="close-search" aria-label="Sluit zoeken">×</button>
-            <div class="search-popup-bar">
-                <input type="text" placeholder="Zoeken naar producten..." aria-label="Zoeken" autofocus>
-                <button type="submit" aria-label="Zoeken">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Shopping Cart Sidebar (hidden by default) -->
     <aside class="cart-sidebar" aria-hidden="true">
         <div class="cart-header">
@@ -499,6 +472,26 @@
             <a href="#" class="btn btn-primary">Naar afrekenen</a>
         </div>
     </aside>
+
+    <!-- Search Modal -->
+    <div class="search-modal" aria-hidden="true">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <h2>Zoeken</h2>
+                <button class="close-search" aria-label="Sluit zoeken">×</button>
+            </div>
+            <div class="search-modal-body">
+                <div class="search-input-wrapper">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Zoeken naar producten..." aria-label="Zoeken" autofocus>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Premium JavaScript -->
     <script src="script.js"></script>
