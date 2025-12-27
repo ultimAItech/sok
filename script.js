@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /**
- * Scroll Animations - Fade in elements on scroll
+ * Scroll Animations - Fade in elements on scroll using data-attributes
  */
 function initScrollAnimations() {
     const observerOptions = {
@@ -23,39 +23,24 @@ function initScrollAnimations() {
         threshold: 0.1
     };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Add staggered delay for grid items
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 50);
+                entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe all fade-in elements
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(el => observer.observe(el));
-
-    // Add fade-in class to sections and cards dynamically
-    const animatableElements = [
-        '.welcome',
-        '.welcome h1',
-        '.welcome p',
-        '.product-card',
-        '.cta-card',
-        '.reviews-widget',
-        '.category-column'
-    ];
-
-    animatableElements.forEach(selector => {
-        document.querySelectorAll(selector).forEach((el, index) => {
-            el.classList.add('fade-in');
-            el.style.transitionDelay = `${index * 0.05}s`;
-            observer.observe(el);
-        });
+    // Add fade-in class and observe all elements with data-animate attribute
+    const elementsToAnimate = document.querySelectorAll('[data-animate]');
+    elementsToAnimate.forEach((el, index) => {
+        const animationClass = el.dataset.animate;
+        if (animationClass) {
+            el.classList.add(animationClass);
+        }
+        el.style.transitionDelay = `${index * 0.05}s`;
+        observer.observe(el);
     });
 }
 
@@ -165,33 +150,32 @@ function initCartSidebar() {
 }
 
 /**
- * Product card hover effects with 3D tilt
+ * Product card hover effects with 3D tilt using event delegation
  */
 function initProductCardEffects() {
-    const cards = document.querySelectorAll('.product-card, .cta-card');
+    const cardContainers = document.querySelectorAll('.products-grid, .cta-grid');
 
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
+    cardContainers.forEach(container => {
+        container.addEventListener('mousemove', (e) => {
+            const card = e.target.closest('.product-card, .cta-card');
+            if (!card) return;
+
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-
             const rotateX = (y - centerY) / 20;
             const rotateY = (centerX - x) / 20;
 
-            card.style.transform = `
-                perspective(1000px)
-                translateY(-8px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-            `;
+            card.style.transform = `perspective(1000px) translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
+        container.addEventListener('mouseleave', (e) => {
+            const card = e.target.closest('.product-card, .cta-card');
+            if(card) {
+                card.style.transform = '';
+            }
         });
     });
 }
@@ -337,17 +321,6 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 });
 
-// Add ripple animation keyframes
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes ripple {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-`;
-document.head.appendChild(style);
 
 console.log('✨ Houthandel Jan Sok Premium JS Loaded');
 
