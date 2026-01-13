@@ -330,49 +330,31 @@ console.log('✨ Houthandel Jan Sok Premium JS Loaded');
  */
 function initMobileMenu() {
     const menuBtn = document.querySelector('.menu-btn');
+    const closeBtn = document.querySelector('.mobile-nav-close');
     const navLinks = document.querySelectorAll('.main-nav a');
 
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            document.body.classList.toggle('nav-open');
+    function openNav() {
+        document.body.classList.add('nav-open');
+    }
 
-            // Transform hamburger to X
-            const isOpen = document.body.classList.contains('nav-open');
-            if (isOpen) {
-                menuBtn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                `;
-            } else {
-                menuBtn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                `;
-            }
-        });
+    function closeNav() {
+        document.body.classList.remove('nav-open');
+    }
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', openNav);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeNav);
     }
 
     // Close menu when clicking a link
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            document.body.classList.remove('nav-open');
-            if (menuBtn) {
-                menuBtn.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                `;
-            }
-        });
+        link.addEventListener('click', closeNav);
     });
 }
+
 
 
 /**
@@ -383,7 +365,7 @@ function initSearchModal() {
     const searchModal = document.querySelector(".search-modal");
     const closeSearchBtn = document.querySelector(".close-search");
     const searchInput = document.querySelector(".search-modal input");
-    
+
     if (searchBtn && searchModal) {
         // Open search modal
         searchBtn.addEventListener("click", () => {
@@ -392,22 +374,22 @@ function initSearchModal() {
             // Focus input after animation
             setTimeout(() => searchInput?.focus(), 100);
         });
-        
+
         // Close search modal
         function closeSearch() {
             searchModal.classList.remove("open");
             document.body.style.overflow = "";
         }
-        
+
         closeSearchBtn?.addEventListener("click", closeSearch);
-        
+
         // Close on background click
         searchModal.addEventListener("click", (e) => {
             if (e.target === searchModal) {
                 closeSearch();
             }
         });
-        
+
         // Close on Escape key
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape" && searchModal.classList.contains("open")) {
