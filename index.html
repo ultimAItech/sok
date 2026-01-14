@@ -76,34 +76,7 @@
 
         <!-- Navigation -->
         <nav class="main-nav">
-            <!-- Mobile close button -->
-            <button class="mobile-nav-close" aria-label="Menu sluiten">
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
             <div class="nav-container">
-                <!-- Mobile Nav Action Buttons (Search & Account) -->
-                <div class="mobile-nav-actions">
-                    <button class="mobile-nav-action-btn search-btn" aria-label="Zoeken">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                        <span>Zoeken</span>
-                    </button>
-                    <a href="account.html" class="mobile-nav-action-btn" aria-label="Mijn Account">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                        <span>Mijn Account</span>
-                    </a>
-                </div>
                 <ul class="nav-primary">
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="shop.html">Shop</a></li>
@@ -522,6 +495,54 @@
             </div>
         </div>
     </div>
+
+    <!-- Mobile Navigation Overlay -->
+    <nav class="mobile-nav-overlay">
+        <!-- Mobile close button -->
+        <button class="mobile-nav-close" aria-label="Menu sluiten">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="nav-container">
+            <!-- Mobile Nav Action Buttons (Search & Account) -->
+            <div class="mobile-nav-actions">
+                <button class="mobile-nav-action-btn search-btn" aria-label="Zoeken">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>Zoeken</span>
+                </button>
+                <a href="account.html" class="mobile-nav-action-btn" aria-label="Mijn Account">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>Mijn Account</span>
+                </a>
+            </div>
+            <ul class="nav-primary">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="configurator.html">Configurator</a></li>
+                <li><a href="account.html">Mijn Account</a></li>
+                <li><a href="snelbestellen.html">Snel bestel lijst</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <ul class="nav-secondary">
+                <li><a href="zakelijk.html">Zakelijk Account aanvragen</a></li>
+                <li><a href="prijslijsten.html">Prijslijsten en Catalogi</a></li>
+                <li><a href="offerte.html">Offerte Aanvraag</a></li>
+                <li><a href="afspraak.html">Offerte Afspraak Maken</a></li>
+                <li><a href="transport.html">🚚 Transport & Bezorging</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <!-- Premium JavaScript -->
     <script src="script.js"></script>

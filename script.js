@@ -331,7 +331,7 @@ console.log('✨ Houthandel Jan Sok Premium JS Loaded');
 function initMobileMenu() {
     const menuBtn = document.querySelector('.menu-btn');
     const closeBtn = document.querySelector('.mobile-nav-close');
-    const navLinks = document.querySelectorAll('.main-nav a');
+    const navLinks = document.querySelectorAll('.mobile-nav-overlay a'); // Updated selector
 
     function openNav() {
         document.body.classList.add('nav-open');
