@@ -534,16 +534,19 @@ object {
         right: 0;
         bottom: 0;
         width: 100vw;
-        height: 100vh;
+        height: 100dvh;
+        /* Use dynamic viewport height */
         background: var(--gradient-dark);
         transform: translateX(100%);
         transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s 0.4s, opacity 0.4s;
         z-index: 2000;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        /* Start from top instead of center */
         align-items: center;
-        padding: 2rem;
+        padding: 6rem 2rem 2rem;
+        /* Add top padding to clear close button */
         overflow-y: auto;
         border: none;
         visibility: hidden;
@@ -567,7 +570,9 @@ object {
         max-width: 600px;
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 3rem;
+        /* Increase gap to spread items out */
+        padding-bottom: 2rem;
     }
 
     .nav-primary,
@@ -575,12 +580,13 @@ object {
         flex-direction: column;
         align-items: center;
         width: 100%;
-        gap: 1rem;
+        gap: 1.5rem;
+        /* Increase gap between links */
     }
 
     .nav-primary {
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 2rem;
+        padding-bottom: 2.5rem;
     }
 
     .nav-primary a {
